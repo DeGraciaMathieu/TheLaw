@@ -94,3 +94,52 @@ if ($page['private'] && Auth::guest()) {
     return null;
 }
 ```
+## Attention à l'utilisation de la négation
+```php
+# bad
+$dontDoIt = true;
+
+if (! $dontDoIt) {
+    //
+}
+```
+```php
+# good
+$doIt = true;
+
+if ($doIt) {
+    //
+}
+```
+## Diminuer l'imbriquation du code
+```php
+# bad
+if (condition_2) {
+    
+    // foo
+
+    if (condition_2) {
+        return;
+    }
+    else {
+        // foo
+    }
+}
+else {
+    return;
+}
+```
+```php
+# good
+if (! condition_1) {
+    return;
+}
+
+// foo
+
+if (condition_2) {
+    return;
+}
+
+// foo
+```
