@@ -51,7 +51,7 @@ public function getPage($url)
     if (! $page) {
         return null;
     }
-    if ($page['private'] && ! Auth::check()) {
+    if ($page['private'] && Auth::guest()) {
         return null;
     }
     return $page;
@@ -67,7 +67,7 @@ public function getPage($url)
         return null;
     }
 
-    if ($page['private'] && ! Auth::check()) {
+    if ($page['private'] && Auth::guest()) {
         return null;
     }
     
@@ -79,7 +79,7 @@ public function getPage($url)
 # bad
 if (! $page) {
     return null;
-if ($page['private'] && ! Auth::check()) {
+if ($page['private'] && Auth::guest()) {
     return null;
 ```
 ```php
@@ -88,7 +88,7 @@ if (! $page) {
     return null;
 }
 
-if ($page['private'] && ! Auth::check()) {
+if ($page['private'] && Auth::guest()) {
     return null;
 }
 ```
