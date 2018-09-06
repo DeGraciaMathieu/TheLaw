@@ -40,3 +40,35 @@ use My\Long;
 use My\Long\Ordened;
 use My\Long\Ordened\Namespace;
 ```
+## Garder un code propre et aérer 
+```php
+# bad
+public function getPage($url)
+{
+    $page = $this->pages()->where('slug', $url)->first();
+    if (! $page) {
+        return null;
+    }
+    if ($page['private'] && ! Auth::check()) {
+        return null;
+    }
+    return $page;
+}
+```
+```php
+# good
+public function getPage($url)
+{
+    $page = $this->pages()->where('slug', $url)->first();
+
+    if (! $page) {
+        return null;
+    }
+
+    if ($page['private'] && ! Auth::check()) {
+        return null;
+    }
+    
+    return $page;
+}
+```
