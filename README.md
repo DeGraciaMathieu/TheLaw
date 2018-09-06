@@ -143,3 +143,28 @@ if (condition_2) {
 
 // foo
 ```
+## Limiter l'utilisation des flags
+```php
+# bad
+function createFile($tmp = true)
+{
+    if ($temp) {
+        // foo
+    }
+    else {
+        // foo
+    }
+}
+```
+```php
+# good
+function createFile()
+{
+    //
+}
+
+function createTempFile()
+{
+    //
+}
+```
