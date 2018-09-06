@@ -114,7 +114,7 @@ if ($doIt) {
 ## Diminuer l'imbriquation du code
 ```php
 # bad
-if (condition_2) {
+if (condition_1) {
     
     // foo
 
