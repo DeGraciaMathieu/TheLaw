@@ -79,7 +79,7 @@ public function getPage($url)
 ## Ne jamais utiliser les structures simplifiées
 ```php
 # bad
-if (! $page) {
+if (! $page)
     return null;
 ```
 ```php
