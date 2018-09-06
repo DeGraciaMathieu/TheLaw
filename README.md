@@ -72,3 +72,21 @@ public function getPage($url)
     return $page;
 }
 ```
+## Ne jamais utiliser les structures simplifiées
+```php
+# bad
+if (! $page) {
+    return null;
+if ($page['private'] && ! Auth::check()) {
+    return null;
+```
+```php
+# good
+if (! $page) {
+    return null;
+}
+
+if ($page['private'] && ! Auth::check()) {
+    return null;
+}
+```
