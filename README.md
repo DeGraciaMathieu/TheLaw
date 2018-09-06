@@ -81,16 +81,10 @@ public function getPage($url)
 # bad
 if (! $page) {
     return null;
-if ($page['private'] && Auth::guest()) {
-    return null;
 ```
 ```php
 # good
 if (! $page) {
-    return null;
-}
-
-if ($page['private'] && Auth::guest()) {
     return null;
 }
 ```
