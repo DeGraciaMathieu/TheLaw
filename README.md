@@ -1,3 +1,5 @@
+![...](https://i1.wp.com/blog.degracia-mathieu.fr/wp-content/uploads/2018/05/ezgif.com-gif-maker.gif?zoom=0.8999999761581421&resize=500%2C211&ssl=1)
+
 # TheLaw :boom:
 
 ## Structure d'une class
