@@ -13,8 +13,8 @@ class Foo {
 ```
 ```php
 # good
-class Foo {
-    
+class Foo 
+{    
     /**
      * Description
      * @param string $var
