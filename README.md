@@ -182,3 +182,18 @@ class RaptorPaddock
     ///
 }
 ```
+## Toutes les classes en dehors du namespace courant doivent se trouver dans les uses
+```php
+# bad
+namespace Foo;
+
+\File::copy();
+```
+```php
+# good
+namespace Foo;
+
+use File;
+
+Foo::copy();
+```
