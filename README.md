@@ -162,3 +162,23 @@ function createTempFile()
     //
 }
 ```
+## Pas de cachet sur les classes
+```php
+# bad
+/**
+ * Created by PhpStorm.
+ * User: Owen Grady
+ * Date: 20/10/2018
+ */
+class RaptorPaddock
+{
+    ///
+}
+```
+```php
+# good
+class RaptorPaddock
+{
+    ///
+}
+```
