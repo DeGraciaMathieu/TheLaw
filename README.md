@@ -142,7 +142,7 @@ if (condition_2) {
 # bad
 function createFile($tmp = true)
 {
-    if ($temp) {
+    if ($tmp) {
         // foo
     }
     else {
@@ -204,17 +204,16 @@ public function handle(ProjectRepository $projectRepository, ProjectService $pro
 {
 
     $projects = $projectRepository->waitingForStandardisation();
-    if (! $projects) {
+    if(! $projects) {
         return $this->info('No project to standardize');
 
     }
 
-        foreach ($projects as $project) {
+  foreach($projects as $project) {
 
         $projectService->standardise($project);
 
         $this->ready($project);
-
 
     }
 }
@@ -235,5 +234,22 @@ public function handle(ProjectRepository $projectRepository, ProjectService $pro
 
         $this->ready($project);
     }
+}
+```
+## Ne jamais utiliser d'acronyme 
+```php
+# bad
+foreach ($pList as $p) {
+
+    $projectServ->standardise($p);
+
+    $this->ready($p);
+}
+```
+```php
+# good
+foreach ($projects as $project) {
+
+    $projectService->standardise($project);
 }
 ```
