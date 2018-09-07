@@ -197,3 +197,43 @@ use File;
 
 Foo::copy();
 ```
+## Respectez vous et ceux qui vous lisent
+```php
+# bad
+public function handle(ProjectRepository $projectRepository, ProjectService $projectService )
+{
+
+    $projects = $projectRepository->waitingForStandardisation();
+    if (! $projects) {
+        return $this->info('No project to standardize');
+
+    }
+
+        foreach ($projects as $project) {
+
+        $projectService->standardise($project);
+
+        $this->ready($project);
+
+
+    }
+}
+```
+```php
+# good
+public function handle(ProjectRepository $projectRepository, ProjectService $projectService)
+{
+    $projects = $projectRepository->waitingForStandardisation();
+
+    if (! $projects) {
+        return $this->info('No project to standardize');
+    }
+
+    foreach ($projects as $project) {
+
+        $projectService->standardise($project);
+
+        $this->ready($project);
+    }
+}
+```
