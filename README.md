@@ -272,7 +272,7 @@ class AnotherService
 ## Les textes toujours incluent dans les fichies de langue
 ```php
 # bad
-<p>Bonjour mon nom est <?php echo $userName ?></p>
+<p>Bonjour mon nom est <?php echo $userName; ?></p>
 # good
 <p><?php echo Lang::get('hello', ['userName' => $userName]); ?></p>
 
@@ -357,7 +357,7 @@ class Service
         $client->get($baseUrl . '/api');
     }
 }
-## perfect
+# perfect
 use Support\Config;
 
 class Service
@@ -376,5 +376,13 @@ class Service
         $client->get($baseUrl . '/api');
     }
 }
+```
+## Utilisation des façades
+```php
+# bad
+$user = auth()->user();
 
+# good
+use Facades\Auth;
+$user = Auth::user();
 ```
