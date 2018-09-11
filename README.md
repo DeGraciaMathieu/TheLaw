@@ -238,8 +238,6 @@ public function handle(ProjectRepository $projectRepository, ProjectService $pro
 # bad
 foreach ($pList as $p) {
     $projectServ->standardise($p);
-
-    $this->ready($p);
 }
 ```
 ```php
