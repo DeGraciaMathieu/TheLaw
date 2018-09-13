@@ -416,3 +416,32 @@ if ($customer->isEligibleForBenefits()) {
     //
 }
 ```
+## Diminuez la charge cognitive de votre code
+**Bad:** :thumbsdown: 
+```php
+$l = ['Austin', 'New York', 'San Francisco'];
+
+for ($i = 0; $i < count($l); $i++) {
+    $li = $l[$i];
+    doStuff();
+    doSomeOtherStuff();
+    // ...
+    // ...
+    // ...
+    // Wait, what is `$li` for again?
+    dispatch($li);
+}
+```
+**Good:** :heart:
+```php
+$locations = ['Austin', 'New York', 'San Francisco'];
+
+foreach ($locations as $location) {
+    doStuff();
+    doSomeOtherStuff();
+    // ...
+    // ...
+    // ...
+    dispatch($location);
+}
+```
