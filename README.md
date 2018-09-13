@@ -30,23 +30,23 @@ class Foo
 }
 ```
 ## Organiser les namespaces
+**Bad:** :thumbsdown: 
 ```php
-# bad
 use My\Long\Ordened;
 use My;
 use My\Long\Ordened\Namespace;
 use My\Long;
 ```
+**Good:** :heart: 
 ```php
-# good
 use My;
 use My\Long;
 use My\Long\Ordened;
 use My\Long\Ordened\Namespace;
 ```
 ## Garder un code propre et aérer
+**Bad:** :thumbsdown: 
 ```php
-# bad
 public function getPage($url)
 {
     $page = $this->pages()->where('slug', $url)->first();
@@ -59,8 +59,8 @@ public function getPage($url)
     return $page;
 }
 ```
+**Good:** :heart: 
 ```php
-# good
 public function getPage($url)
 {
     $page = $this->pages()->where('slug', $url)->first();
