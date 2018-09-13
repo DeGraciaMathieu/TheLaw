@@ -402,3 +402,17 @@ use Facades\Auth;
 
 $user = Auth::user();
 ```
+## Ne compensez pas du mauvais code par des commentaires
+**Bad:** :thumbsdown: 
+```php
+# Vérifie que le client peut bénéficier des avantages 
+if (($customer->flag && HOURLY_FLAG) && customer->age > 65) {
+    //
+}
+```
+**Good:** :heart:
+```php
+if ($customer->isEligibleForBenefits()) {
+    //
+}
+```
