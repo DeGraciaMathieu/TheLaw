@@ -406,7 +406,7 @@ $user = Auth::user();
 **Bad:** :thumbsdown: 
 ```php
 # Vérifie que le client peut bénéficier des avantages 
-if (($customer->flag && HOURLY_FLAG) && customer->age > 65) {
+if (($customer->flag && HOURLY_FLAG) && $customer->age > 65) {
     //
 }
 ```
