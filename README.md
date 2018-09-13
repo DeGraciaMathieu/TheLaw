@@ -77,28 +77,28 @@ public function getPage($url)
 }
 ```
 ## Ne jamais utiliser les structures simplifiées
+**Bad:** :thumbsdown: 
 ```php
-# bad
 if (! $page)
     return null;
 ```
+**Good:** :heart:
 ```php
-# good
 if (! $page) {
     return null;
 }
 ```
 ## Attention à l'utilisation de la négation
+**Bad:** :thumbsdown: 
 ```php
-# bad
 $dontDoIt = true;
 
 if (! $dontDoIt) {
     //
 }
 ```
+**Good:** :heart:
 ```php
-# good
 $doIt = true;
 
 if ($doIt) {
@@ -106,8 +106,8 @@ if ($doIt) {
 }
 ```
 ## Diminuer l'imbriquation du code
+**Bad:** :thumbsdown: 
 ```php
-# bad
 if (condition_1) {
 
     // foo
@@ -122,8 +122,8 @@ else {
     return;
 }
 ```
+**Good:** :heart:
 ```php
-# good
 if (! condition_1) {
     return;
 }
@@ -137,8 +137,8 @@ if (condition_2) {
 // foo
 ```
 ## Limiter l'utilisation des flags
+**Bad:** :thumbsdown: 
 ```php
-# bad
 function createFile($tmp = true)
 {
     if ($tmp) {
@@ -148,8 +148,8 @@ function createFile($tmp = true)
     }
 }
 ```
+**Good:** :heart:
 ```php
-# good
 function createFile()
 {
     //
@@ -161,8 +161,8 @@ function createTempFile()
 }
 ```
 ## Pas de cachet sur les classes
+**Bad:** :thumbsdown: 
 ```php
-# bad
 /**
  * Created by PhpStorm.
  * User: Owen Grady
@@ -173,22 +173,22 @@ class RaptorPaddock
     //
 }
 ```
+**Good:** :heart:
 ```php
-# good
 class RaptorPaddock
 {
     //
 }
 ```
 ## Toutes les classes en dehors du namespace courant doivent se trouver dans les uses
+**Bad:** :thumbsdown: 
 ```php
-# bad
 namespace Foo;
 
 \File::copy();
 ```
+**Good:** :heart:
 ```php
-# good
 namespace Foo;
 
 use File;
@@ -196,8 +196,8 @@ use File;
 Foo::copy();
 ```
 ## Respectez vous et ceux qui vous lisent
+**Bad:** :thumbsdown: 
 ```php
-# bad
 public function handle(ProjectRepository $projectRepository, ProjectService $projectService )
 {
 
@@ -216,8 +216,8 @@ public function handle(ProjectRepository $projectRepository, ProjectService $pro
     }
 }
 ```
+**Good:** :heart:
 ```php
-# good
 public function handle(ProjectRepository $projectRepository, ProjectService $projectService)
 {
     $projects = $projectRepository->waitingForStandardisation();
@@ -234,19 +234,20 @@ public function handle(ProjectRepository $projectRepository, ProjectService $pro
 }
 ```
 ## Ne jamais utiliser d'acronyme
+**Bad:** :thumbsdown: 
 ```php
-# bad
 foreach ($pList as $p) {
     $projectServ->standardise($p);
 }
 ```
+**Good:** :heart:
 ```php
-# good
 foreach ($projects as $project) {
     $projectService->standardise($project);
 }
 ```
 ## Injection de dépendances
+**Good:** :heart:
 ```php
 use Contracts\MyService;
 
@@ -268,14 +269,17 @@ class AnotherService
 
 ```
 ## Les textes toujours incluent dans les fichies de langue
+**Bad:** :thumbsdown: 
 ```php
-# bad
 <p>Bonjour mon nom est <?php echo $userName; ?></p>
-# good
+```
+**Good:** :heart:
+```php
 <p><?php echo Lang::get('hello', ['userName' => $userName]); ?></p>
 
 ```
 ## Pluralisations
+**Good:** :heart:
 ```php
 # Le modèle est au singulier, sa table est quant à elle au pluriel
 App\Models\Car;
@@ -287,6 +291,7 @@ App\Seeders\CarsSeeder;
 Route::get('cars', 'CarsControllers@index')->name('cars.index');
 ```
 ## Cohérence entre les routes, les contrôleurs, le nom des vues et les traductions
+**Good:** :heart:
 ```php
 # app/Controllers/CarsController :
 class CarsController
@@ -321,20 +326,27 @@ return [
 ];
 ```
 ## Convention de nommage
+**Good:** :heart: 
 ```php
 # les classes
 class FooBar extends FooBase implements FooContract {}
 
 # les interfaces sont suffixés de Contract
 interface FooContract {}
+```
 
-# les noms des variables sont en anglais, en camelCase et surtout elles sont explicites
-$__ma_super_var = $r = $listeDesCars = $result = Car::all(); # bad
-$cars = Car::all(); # good
+## les noms des variables sont en anglais, en camelCase et surtout elles sont explicites
+**Bad:** :thumbsdown: 
+```php
+$__ma_super_var = $r = $listeDesCars = $result = Car::all(); 
+```
+**Good:** :heart: 
+```php
+$cars = Car::all(); 
 ```
 ## Utilisation de configuration
+**Bad:** :thumbsdown: 
 ```php
-# bad
 class Service
 {
     const SERVICE_URL = 'http://service.com'
@@ -345,7 +357,9 @@ class Service
         $client->get(self::SERVICE_URL . '/api');
     }
 }
-# good
+```
+**Good:** :heart: 
+```php
 class Service
 {
     public function callMe()
@@ -355,7 +369,9 @@ class Service
         $client->get($baseUrl . '/api');
     }
 }
-# perfect
+```
+**Perfect:** :heartpulse: 
+```php
 use Support\Config;
 
 class Service
@@ -376,11 +392,13 @@ class Service
 }
 ```
 ## Utilisation des façades
+**Bad:** :thumbsdown: 
 ```php
-# bad
 $user = auth()->user();
-
-# good
+```
+**Good:** :heart:
+```php
 use Facades\Auth;
+
 $user = Auth::user();
 ```
