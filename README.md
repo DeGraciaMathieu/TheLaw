@@ -5,16 +5,17 @@
 # TheLaw :boom:
 
 ## Structure d'une class
+:thumbsdown:
 ```php
-# bad
+:heart:
 class Foo {
     public function bar($var){
         //
     }
 }
 ```
+:heart:
 ```php
-# good
 class Foo
 {
     /**
