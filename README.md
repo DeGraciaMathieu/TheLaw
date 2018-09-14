@@ -458,3 +458,16 @@ if (condition) {
     throw new MySpecificException();
 }
 ```
+## Ne pas hesiter à créer des formes négatives des méthodes
+**Bad:** :thumbsdown: 
+```php
+if (! $user->haveRight('...')) {
+    //
+}
+```
+**Good:** :heart:
+```php
+if ($user->dontHaveRight('...')) {
+    //
+}
+```
