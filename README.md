@@ -445,3 +445,16 @@ foreach ($locations as $location) {
     dispatch($location);
 }
 ```
+## Attention à l'utilisation de la classe Exception
+**Bad:** :thumbsdown: 
+```php
+if (condition) {
+    throw new Exception();
+}
+```
+**Good:** :heart:
+```php
+if (condition) {
+    throw new MySpecificException();
+}
+```
