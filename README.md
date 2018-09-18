@@ -79,8 +79,7 @@ public function getPage($url)
 ## Ne jamais utiliser les structures simplifiées
 **Bad:** :thumbsdown: 
 ```php
-if (! $page)
-    return null;
+if (! $page) return null;
 ```
 **Good:** :heart:
 ```php
