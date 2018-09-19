@@ -192,7 +192,7 @@ namespace Foo;
 
 use File;
 
-Foo::copy();
+File::copy();
 ```
 ## Respectez vous et ceux qui vous lisent
 **Bad:** :thumbsdown: 
