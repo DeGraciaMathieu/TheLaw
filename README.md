@@ -470,3 +470,17 @@ if ($user->dontHaveRight('...')) {
     //
 }
 ```
+## Ne pas utiliser directement les valeurs de l'environnement
+**Bad:** :thumbsdown: 
+```php
+$host = env('HOST');
+```
+**Good:** :heart:
+```php
+# app/config/app.php
+return [
+  'host' => env('HOST'),
+];
+
+$host = config('app.host');
+```
