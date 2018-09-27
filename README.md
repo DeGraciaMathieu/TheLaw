@@ -107,11 +107,11 @@ if ($doIt) {
 ## Diminuer l'imbriquation du code
 **Bad:** :thumbsdown: 
 ```php
-if (condition_1) {
+if ($condition_1) {
 
     // foo
 
-    if (condition_2) {
+    if ($condition_2) {
         return;
     } else {
         // foo
@@ -123,13 +123,13 @@ else {
 ```
 **Good:** :heart:
 ```php
-if (! condition_1) {
+if (! $condition_1) {
     return;
 }
 
 // foo
 
-if (condition_2) {
+if ($condition_2) {
     return;
 }
 
