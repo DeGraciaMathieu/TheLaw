@@ -484,3 +484,14 @@ return [
 
 $host = config('app.host');
 ```
+## Attention aux accidents ferroviaires
+**Bad:** :thumbsdown: 
+```php
+$user->getAccount()->getBalance()->deductAmount($orderTotal);
+```
+**Good:** :heart:
+```php
+$account = $user->getAccount();
+$balance = $account->getBalance();
+$balance->deductAmount($orderTotal);
+```
