@@ -397,13 +397,17 @@ create table users (
 
 # Création de sa table log
 create table users_log (
-    log_pkey serial primary key not null,
+    log_pkey integer primary key not null,
     date_log timestamp DEFAULT current_timestamp not null,
     action_log text DEFAULT 'insert'::text not null,
     id integer,
     name text,
     age integer
 );
+
+# Création de la séquence
+create sequence users_log_pkey_seq start 1;
+alter table users alter column log_pkey set default nextval('users_log_pkey_seq');
 
 # Création de la fonction exec par le trigger
 CREATE OR REPLACE FUNCTION fill_users_log() RETURNS TRIGGER AS $$
