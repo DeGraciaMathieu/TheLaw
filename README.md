@@ -495,3 +495,38 @@ $account = $user->getAccount();
 $balance = $account->getBalance();
 $balance->deductAmount($orderTotal);
 ```
+## Nommage des tables de log
+```sql
+# Création table users pour l'exemple
+create table users (
+    id serial primary key not null,
+    name text not null,
+    age integer
+);
+ # Création de sa table log
+create table users_log (
+    log_pkey integer primary key not null,
+    date_log timestamp DEFAULT current_timestamp not null,
+    action_log text DEFAULT 'insert'::text not null,
+    id integer,
+    name text,
+    age integer
+);
+ # Création de la séquence
+create sequence users_log_pkey_seq start 1;
+alter table users alter column log_pkey set default nextval('users_log_pkey_seq');
+ # Création de la fonction exec par le trigger
+CREATE OR REPLACE FUNCTION fill_users_log() RETURNS TRIGGER AS $$
+DECLARE
+BEGIN
+    IF TG_OP = 'DELETE' THEN
+        INSERT INTO users_log SELECT nextval((TG_TABLE_NAME||'_log_pkey_seq'::text)::regclass), CURRENT_TIMESTAMP, lower(TG_OP), OLD.*;
+    ELSE
+        INSERT INTO users_log SELECT nextval((TG_TABLE_NAME||'_log_pkey_seq'::text)::regclass), CURRENT_TIMESTAMP, lower(TG_OP), NEW.*;
+    END IF;
+    RETURN NULL;
+END;
+$$ LANGUAGE 'plpgsql';
+ # Création du trigger
+CREATE TRIGGER tg_users_log AFTER INSERT OR UPDATE OR DELETE ON users FOR EACH ROW EXECUTE PROCEDURE fill_users_log();
+```
