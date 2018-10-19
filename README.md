@@ -5,16 +5,16 @@
 # TheLaw :boom:
 
 ## Structure d'une class
+**Bad:** :thumbsdown: 
 ```php
-# bad
 class Foo {
     public function bar($var){
         //
     }
 }
 ```
+**Good:** :heart: 
 ```php
-# good
 class Foo
 {
     /**
@@ -30,23 +30,23 @@ class Foo
 }
 ```
 ## Organiser les namespaces
+**Bad:** :thumbsdown: 
 ```php
-# bad
 use My\Long\Ordened;
 use My;
 use My\Long\Ordened\Namespace;
 use My\Long;
 ```
+**Good:** :heart: 
 ```php
-# good
 use My;
 use My\Long;
 use My\Long\Ordened;
 use My\Long\Ordened\Namespace;
 ```
 ## Garder un code propre et aérer
+**Bad:** :thumbsdown: 
 ```php
-# bad
 public function getPage($url)
 {
     $page = $this->pages()->where('slug', $url)->first();
@@ -59,8 +59,8 @@ public function getPage($url)
     return $page;
 }
 ```
+**Good:** :heart: 
 ```php
-# good
 public function getPage($url)
 {
     $page = $this->pages()->where('slug', $url)->first();
@@ -77,28 +77,27 @@ public function getPage($url)
 }
 ```
 ## Ne jamais utiliser les structures simplifiées
+**Bad:** :thumbsdown: 
 ```php
-# bad
-if (! $page)
-    return null;
+if (! $page) return null;
 ```
+**Good:** :heart:
 ```php
-# good
 if (! $page) {
     return null;
 }
 ```
 ## Attention à l'utilisation de la négation
+**Bad:** :thumbsdown: 
 ```php
-# bad
 $dontDoIt = true;
 
 if (! $dontDoIt) {
     //
 }
 ```
+**Good:** :heart:
 ```php
-# good
 $doIt = true;
 
 if ($doIt) {
@@ -106,13 +105,13 @@ if ($doIt) {
 }
 ```
 ## Diminuer l'imbriquation du code
+**Bad:** :thumbsdown: 
 ```php
-# bad
-if (condition_1) {
+if ($condition_1) {
 
     // foo
 
-    if (condition_2) {
+    if ($condition_2) {
         return;
     } else {
         // foo
@@ -122,23 +121,23 @@ else {
     return;
 }
 ```
+**Good:** :heart:
 ```php
-# good
-if (! condition_1) {
+if (! $condition_1) {
     return;
 }
 
 // foo
 
-if (condition_2) {
+if ($condition_2) {
     return;
 }
 
 // foo
 ```
 ## Limiter l'utilisation des flags
+**Bad:** :thumbsdown: 
 ```php
-# bad
 function createFile($tmp = true)
 {
     if ($tmp) {
@@ -148,8 +147,8 @@ function createFile($tmp = true)
     }
 }
 ```
+**Good:** :heart:
 ```php
-# good
 function createFile()
 {
     //
@@ -161,8 +160,8 @@ function createTempFile()
 }
 ```
 ## Pas de cachet sur les classes
+**Bad:** :thumbsdown: 
 ```php
-# bad
 /**
  * Created by PhpStorm.
  * User: Owen Grady
@@ -173,31 +172,31 @@ class RaptorPaddock
     //
 }
 ```
+**Good:** :heart:
 ```php
-# good
 class RaptorPaddock
 {
     //
 }
 ```
 ## Toutes les classes en dehors du namespace courant doivent se trouver dans les uses
+**Bad:** :thumbsdown: 
 ```php
-# bad
 namespace Foo;
 
 \File::copy();
 ```
+**Good:** :heart:
 ```php
-# good
 namespace Foo;
 
 use File;
 
-Foo::copy();
+File::copy();
 ```
 ## Respectez vous et ceux qui vous lisent
+**Bad:** :thumbsdown: 
 ```php
-# bad
 public function handle(ProjectRepository $projectRepository, ProjectService $projectService )
 {
 
@@ -216,8 +215,8 @@ public function handle(ProjectRepository $projectRepository, ProjectService $pro
     }
 }
 ```
+**Good:** :heart:
 ```php
-# good
 public function handle(ProjectRepository $projectRepository, ProjectService $projectService)
 {
     $projects = $projectRepository->waitingForStandardisation();
@@ -234,21 +233,20 @@ public function handle(ProjectRepository $projectRepository, ProjectService $pro
 }
 ```
 ## Ne jamais utiliser d'acronyme
+**Bad:** :thumbsdown: 
 ```php
-# bad
 foreach ($pList as $p) {
     $projectServ->standardise($p);
-
-    $this->ready($p);
 }
 ```
+**Good:** :heart:
 ```php
-# good
 foreach ($projects as $project) {
     $projectService->standardise($project);
 }
 ```
 ## Injection de dépendances
+**Good:** :heart:
 ```php
 use Contracts\MyService;
 
@@ -270,14 +268,17 @@ class AnotherService
 
 ```
 ## Les textes toujours incluent dans les fichies de langue
+**Bad:** :thumbsdown: 
 ```php
-# bad
 <p>Bonjour mon nom est <?php echo $userName; ?></p>
-# good
+```
+**Good:** :heart:
+```php
 <p><?php echo Lang::get('hello', ['userName' => $userName]); ?></p>
 
 ```
 ## Pluralisations
+**Good:** :heart:
 ```php
 # Le modèle est au singulier, sa table est quant à elle au pluriel
 App\Models\Car;
@@ -289,6 +290,7 @@ App\Seeders\CarsSeeder;
 Route::get('cars', 'CarsControllers@index')->name('cars.index');
 ```
 ## Cohérence entre les routes, les contrôleurs, le nom des vues et les traductions
+**Good:** :heart:
 ```php
 # app/Controllers/CarsController :
 class CarsController
@@ -323,20 +325,27 @@ return [
 ];
 ```
 ## Convention de nommage
+**Good:** :heart: 
 ```php
 # les classes
 class FooBar extends FooBase implements FooContract {}
 
 # les interfaces sont suffixés de Contract
 interface FooContract {}
+```
 
-# les noms des variables sont en anglais, en camelCase et surtout elles sont explicites
-$__ma_super_var = $r = $listeDesCars = $result = Car::all(); # bad
-$cars = Car::all(); # good
+## les noms des variables sont en anglais, en camelCase et surtout elles sont explicites
+**Bad:** :thumbsdown: 
+```php
+$__ma_super_var = $r = $listeDesCars = $result = Car::all(); 
+```
+**Good:** :heart: 
+```php
+$cars = Car::all(); 
 ```
 ## Utilisation de configuration
+**Bad:** :thumbsdown: 
 ```php
-# bad
 class Service
 {
     const SERVICE_URL = 'http://service.com'
@@ -347,7 +356,9 @@ class Service
         $client->get(self::SERVICE_URL . '/api');
     }
 }
-# good
+```
+**Good:** :heart: 
+```php
 class Service
 {
     public function callMe()
@@ -357,7 +368,9 @@ class Service
         $client->get($baseUrl . '/api');
     }
 }
-# perfect
+```
+**Perfect:** :heartpulse: 
+```php
 use Support\Config;
 
 class Service
@@ -378,13 +391,109 @@ class Service
 }
 ```
 ## Utilisation des façades
+**Bad:** :thumbsdown: 
 ```php
-# bad
 $user = auth()->user();
-
-# good
+```
+**Good:** :heart:
+```php
 use Facades\Auth;
+
 $user = Auth::user();
+```
+## Ne compensez pas du mauvais code par des commentaires
+**Bad:** :thumbsdown: 
+```php
+# Vérifie que le client peut bénéficier des avantages 
+if (($customer->flag && HOURLY_FLAG) && $customer->age > 65) {
+    //
+}
+```
+**Good:** :heart:
+```php
+if ($customer->isEligibleForBenefits()) {
+    //
+}
+```
+## Diminuez la charge cognitive de votre code
+**Bad:** :thumbsdown: 
+```php
+$l = ['Austin', 'New York', 'San Francisco'];
+
+for ($i = 0; $i < count($l); $i++) {
+    $li = $l[$i];
+    doStuff();
+    doSomeOtherStuff();
+    // ...
+    // ...
+    // ...
+    // Wait, what is `$li` for again?
+    dispatch($li);
+}
+```
+**Good:** :heart:
+```php
+$locations = ['Austin', 'New York', 'San Francisco'];
+
+foreach ($locations as $location) {
+    doStuff();
+    doSomeOtherStuff();
+    // ...
+    // ...
+    // ...
+    dispatch($location);
+}
+```
+## Attention à l'utilisation de la classe Exception
+**Bad:** :thumbsdown: 
+```php
+if (condition) {
+    throw new Exception();
+}
+```
+**Good:** :heart:
+```php
+if (condition) {
+    throw new MySpecificException();
+}
+```
+## Ne pas hesiter à créer des formes négatives des méthodes
+**Bad:** :thumbsdown: 
+```php
+if (! $user->haveRight('...')) {
+    //
+}
+```
+**Good:** :heart:
+```php
+if ($user->dontHaveRight('...')) {
+    //
+}
+```
+## Ne pas utiliser directement les valeurs de l'environnement
+**Bad:** :thumbsdown: 
+```php
+$host = env('HOST');
+```
+**Good:** :heart:
+```php
+# app/config/app.php
+return [
+  'host' => env('HOST'),
+];
+
+$host = config('app.host');
+```
+## Attention aux accidents ferroviaires
+**Bad:** :thumbsdown: 
+```php
+$user->getAccount()->getBalance()->deductAmount($orderTotal);
+```
+**Good:** :heart:
+```php
+$account = $user->getAccount();
+$balance = $account->getBalance();
+$balance->deductAmount($orderTotal);
 ```
 ## Nommage des tables de log
 ```sql
@@ -394,8 +503,7 @@ create table users (
     name text not null,
     age integer
 );
-
-# Création de sa table log
+ # Création de sa table log
 create table users_log (
     log_pkey integer primary key not null,
     date_log timestamp DEFAULT current_timestamp not null,
@@ -404,12 +512,10 @@ create table users_log (
     name text,
     age integer
 );
-
-# Création de la séquence
+ # Création de la séquence
 create sequence users_log_pkey_seq start 1;
 alter table users alter column log_pkey set default nextval('users_log_pkey_seq');
-
-# Création de la fonction exec par le trigger
+ # Création de la fonction exec par le trigger
 CREATE OR REPLACE FUNCTION fill_users_log() RETURNS TRIGGER AS $$
 DECLARE
 BEGIN
@@ -421,7 +527,6 @@ BEGIN
     RETURN NULL;
 END;
 $$ LANGUAGE 'plpgsql';
-
-# Création du trigger
+ # Création du trigger
 CREATE TRIGGER tg_users_log AFTER INSERT OR UPDATE OR DELETE ON users FOR EACH ROW EXECUTE PROCEDURE fill_users_log();
 ```
