@@ -364,7 +364,7 @@ class Service
     public function callMe()
     {
         // ...
-        $baseUrl = config('service.url');
+        $baseUrl = Config::get('service.url');
         $client->get($baseUrl . '/api');
     }
 }
