@@ -390,7 +390,7 @@ class Service
     }
 }
 ```
-## Utilisation des façades
+## Préférez les facades aux helper, et l'injection aux facades
 **Bad:** :thumbsdown: 
 ```php
 class Foo
