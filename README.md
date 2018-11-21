@@ -393,13 +393,42 @@ class Service
 ## Utilisation des façades
 **Bad:** :thumbsdown: 
 ```php
-$user = auth()->user();
+class Foo
+{
+    public function bar()
+    {
+        $user = auth()->user();
+    }
+}
 ```
 **Good:** :heart:
 ```php
 use Facades\Auth;
 
-$user = Auth::user();
+class Foo
+{
+    public function bar()
+    {
+        $user = Auth::user();
+    }
+}
+```
+**Perfect:** :heartpulse: 
+```php
+use Facades\Auth;
+
+class Foo
+{
+    public function __construct(Auth $auth)
+    {
+        $this->auth = $auth;
+    }
+
+    public function bar()
+    {
+        $user = $this->auth->user();
+    }
+}
 ```
 ## Ne compensez pas du mauvais code par des commentaires
 **Bad:** :thumbsdown: 
