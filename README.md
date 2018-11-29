@@ -564,7 +564,7 @@ CREATE TRIGGER tg_users_log AFTER INSERT OR UPDATE OR DELETE ON users FOR EACH R
 
 **Bad:** :thumbsdown: 
 ```php
-public function update(File &$file)
+function update(&$file)
 {
     $file->updated_at = now();
 }
