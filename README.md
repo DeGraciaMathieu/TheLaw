@@ -4,10 +4,7 @@
 
 # TheLaw :boom:
 
-# Sommaire 
-* [Structure d'une class](https://github.com/DeGraciaMathieu/TheLaw/blob/master/README.md#structure-class)
-
-## [Structure d'une class](#structure-class)
+## Structure d'une class
 **Bad:** :thumbsdown: 
 ```php
 class Foo {
