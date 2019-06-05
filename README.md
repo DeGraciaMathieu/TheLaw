@@ -559,7 +559,7 @@ $$ LANGUAGE 'plpgsql';
  # Création du trigger
 CREATE TRIGGER tg_users_log AFTER INSERT OR UPDATE OR DELETE ON users FOR EACH ROW EXECUTE PROCEDURE fill_users_log();
 ```
-## Ne pas utiliser le passage par reference
+## Ne pas utiliser le passage par référence
 >Tout ce qui vous oblige à vérifier la signature de la fonction équivaut à une hésitation. Il s’agit d’une coupure cognitive qui doit être évitée.
 
 **Bad:** :thumbsdown: 
