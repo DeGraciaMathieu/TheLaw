@@ -267,7 +267,7 @@ class AnotherService
 }
 
 ```
-## Les textes toujours incluent dans les fichies de langue
+## Les textes toujours incluent dans les fichiers de langue
 **Bad:** :thumbsdown: 
 ```php
 <p>Bonjour mon nom est <?php echo $userName; ?></p>
